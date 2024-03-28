@@ -1,0 +1,64 @@
+<mat-card>
+<h1>{{btnTitulo}}</h1>
+
+<form [formGroup]="clienteForm" (ngSubmit)="Submit()">
+  <input type="hidden" formControlName="id">
+
+ 
+  
+  <div class="input_box">
+    <mat-form-field class="example-full-width">
+    <mat-label for="">Nome : </mat-label>
+    <input type="text" matInput formControlName="nome" placeholder="Informe o nome" required>  
+  </mat-form-field>
+  </div>
+
+  <div class="input_box">
+    <mat-form-field class="example-full-width">
+    <mat-label for="">E-mail : </mat-label>
+    <input type="text" matInput formControlName="email" placeholder="Informe o email" required>
+    </mat-form-field>
+  </div>
+
+  <div class="input_box">
+    <mat-form-field>
+      <label for="">Tipo : </label>
+      <mat-select id="tipoCliente" formControlName="tipoCliente" required>
+        <mat-option value="Ouro">Ouro</mat-option>
+        <mat-option value="Prata">Prata</mat-option>
+        <mat-option value="Bronze">Bronze</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Botão para adicionar telefone -->
+  <button mat-flat-button color="primary" type="button" (click)="adicionarTelefone()">Adicionar Telefone</button>
+
+
+  
+  <!-- Lista de telefones -->
+  <div formArrayName="telefones">
+    <div *ngFor="let telefone of telefones.controls; let i = index" [formGroupName]="i">
+      <!-- Campos do telefone -->
+      <mat-form-field><input formControlName="ddd" matInput placeholder="DDD"></mat-form-field>
+      <mat-form-field><input formControlName="numero" matInput placeholder="Número"></mat-form-field>
+      
+      <mat-form-field>
+        <mat-select id="tipoTelefone" formControlName="tipo" placeholder="Tipo" required>
+          <mat-option value="Fixo">Fixo</mat-option>
+          <mat-option value="Movel">Movel</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Botão para remover telefone -->
+      <button mat-flat-button color="warn"type="button" (click)="removerTelefone(i)">Remover Telefone</button>
+    </div>
+  </div>
+
+  <div class="btn_box">
+    <button type="submit" [disabled]="!clienteForm.valid" mat-flat-button color="primary">{{btnAcao}}</button>
+    <button routerLink="" mat-raised-button color="accent">Voltar</button>
+  </div>
+</form>
+</mat-card>
+

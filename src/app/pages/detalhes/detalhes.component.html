@@ -1,0 +1,72 @@
+<mat-card>
+<div>
+  <h1>Detalhes Funcionario</h1>
+</div>
+
+<div *ngIf="cliente">
+  <form>
+    <div class="input-box">
+      <mat-form-field class="example-full-width">
+        <mat-label for="">Nome : </mat-label>
+        <input type="text" matInput value="{{cliente.nome}}" disabled>
+      </mat-form-field>
+    </div>
+
+    
+
+    <div class="input-box">
+      <mat-form-field class="example-full-width">
+        <mat-label for="">Email</mat-label>
+        <input type="text" matInput value="{{cliente.email}}" disabled>
+      </mat-form-field>
+    </div>
+
+    <div class="input-box">
+      <mat-form-field>
+        <mat-label for="">Tipo</mat-label>
+        <input type="text" matInput value="{{cliente.tipoCliente}}" disabled>
+      </mat-form-field>
+    </div>
+
+    <div *ngFor="let telefone of cliente.telefones; let i = index" class="input-box">
+      <div>Telefone {{i + 1}}</div>
+      <!-- <label for="ddd-{{i}}">DDD</label> -->
+      <mat-form-field><input type="text" matInput id="ddd-{{i}}" [(ngModel)]="telefone.ddd" name="ddd-{{i}}"></mat-form-field>
+    
+      <!-- <label for="numero-{{i}}">Numero</label> -->
+      <mat-form-field><input type="text" matInput id="numero-{{i}}" [(ngModel)]="telefone.numero" name="numero-{{i}}"></mat-form-field>
+    
+      <!-- <label for="tipo-{{i}}">Tipo</label> -->
+      <mat-form-field><input type="text" matInput id="tipo-{{i}}" [(ngModel)]="telefone.tipo" name="tipo-{{i}}"></mat-form-field>
+    </div>
+
+    <div class="input-box">
+      <mat-form-field>
+        <mat-label for="">Data de Criação</mat-label>
+        <input type="text" matInput value="{{cliente.dataDeCriacao}}" disabled>
+      </mat-form-field>
+    </div>
+
+    <div class="input-box">
+      <mat-form-field>
+      <mat-label for="">Data de Alteração</mat-label>
+      <input type="text" matInput value="{{cliente.dataDeAlteracao}}" disabled>
+      </mat-form-field>
+    </div>
+
+    <div class="input-box">
+      <mat-form-field>
+      <label for="">Ativo</label>
+      <input type="text" matInput value="{{cliente.ativo == true ? 'Ativo' : 'Inativo'}}" disabled>
+      </mat-form-field>
+    </div>
+
+    <div class="btn_box">
+      <button (click)="InativaCliente()" mat-flat-button color="primary">Inativar Cliente</button>
+      <button routerLink=''mat-raised-button color="accent">Voltar</button>
+    </div>
+
+
+  </form>
+</div>
+</mat-card>
