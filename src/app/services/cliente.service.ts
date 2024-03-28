@@ -32,5 +32,9 @@ export class ClienteService {
     return this.http.put<ServiceResponse<ClienteModel[]>>(`${this.apiUrl}/InativarCliente/${id}`, id);
   }
 
+  DeleteCliente(email: string): Observable<ServiceResponse<ClienteModel[]>>{
+    return this.http.delete<ServiceResponse<ClienteModel[]>>(`${this.apiUrl}/${email}`);
+  }
+
 
 }

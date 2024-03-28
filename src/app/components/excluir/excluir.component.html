@@ -1,0 +1,20 @@
+<mat-card>
+<div *ngIf="cliente">
+  <h1>Deseja confirmar a excluisão?</h1>
+  <div>
+    <mat-form-field>
+    <mat-label style="font-style: bold;">Cliente</mat-label>
+      <input type="text" matInput value="{{cliente.nome}}" disabled>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label style="font-style: bold;">E-mail</mat-label>
+      <input type="text" matInput value="{{cliente.email}}" disabled>
+    </mat-form-field>  
+  
+  </div>
+  <div>
+    <button mat-flat-button color="warn" (click)="Excluir()"> Exclusão </button>
+  </div>
+</div>
+</mat-card>

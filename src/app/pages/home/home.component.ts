@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ClienteModel } from 'src/app/models/ClienteModel';
 import { ClienteService } from 'src/app/services/cliente.service';
 import * as moment from 'moment';
+import { MatDialog } from '@angular/material/dialog';
+import { ExcluirComponent } from 'src/app/components/excluir/excluir.component';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,10 @@ export class HomeComponent implements OnInit {
   clientesGeral: ClienteModel[] = [];
   colunas = ['Ativo', 'Nome', 'Email', 'Tipo', 'Acoes', 'Excluir'];
 
-  constructor(private clienteService: ClienteService) {}
+  constructor(
+    private clienteService: ClienteService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.clienteService.GetClientes().subscribe((data) => {
@@ -38,5 +43,16 @@ export class HomeComponent implements OnInit {
     this.clientes = this.clientesGeral.filter((cliente) => {
       return cliente.nome.toLowerCase().includes(value);
     });
+  }
+
+  openDialog(id: number) {
+    this.dialog.open(ExcluirComponent, {
+      width: '350px',
+      height: '350px',
+      data: {
+        id: id,
+      }
+    });
+
   }
 }
