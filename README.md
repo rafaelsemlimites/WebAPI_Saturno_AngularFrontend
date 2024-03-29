@@ -1,3 +1,6 @@
+![image](https://github.com/rafaelsemlimites/WebAPI_Saturno_AngularFrontend/assets/7587999/e9430aba-4520-41a5-8864-a57157af122a)
+
+
 # SaturnoAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.8.
